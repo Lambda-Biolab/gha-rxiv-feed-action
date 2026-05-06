@@ -15,6 +15,7 @@ from src.utils import (
     load_all_existing_ids,
     needs_pagination,
     parse_biorxiv_json,
+    prune_existing_csvs,
     write_file,
 )
 
@@ -133,6 +134,38 @@ def test_parse_biorxiv_json_no_filter_keeps_all():
     result_empty = parse_biorxiv_json(FIXTURE_JSON, set())
     assert len(result_none[(2024, 3)]) == 2
     assert len(result_empty[(2024, 3)]) == 2
+
+
+def test_prune_existing_csvs_drops_outside_set(tmp_path):
+    """Rewrites CSVs to keep only rows whose Category is in the set."""
+    header = ["Date", "ISOWeek", "DOI", "Version", "Category", "Title", "Authors"]
+    (tmp_path / "2024").mkdir()
+    p = tmp_path / "2024" / "3.csv"
+    with open(p, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(header)
+        w.writerow(["2024-01-15", 3, "10.1101/a", "1", "Bioinformatics", "K", "X"])
+        w.writerow(["2024-01-15", 3, "10.1101/b", "1", "neuroscience", "D", "Y"])
+        w.writerow(["2024-01-15", 3, "10.1101/c", "1", "microbiology", "K", "Z"])
+    removed = prune_existing_csvs(str(tmp_path), {"bioinformatics", "microbiology"})
+    assert removed == 1
+    with open(p) as f:
+        kept = list(csv.DictReader(f))
+    assert {r["DOI"] for r in kept} == {"10.1101/a", "10.1101/c"}
+
+
+def test_prune_existing_csvs_noop_when_empty(tmp_path):
+    """Empty/None category set leaves CSVs untouched."""
+    (tmp_path / "2024").mkdir()
+    p = tmp_path / "2024" / "3.csv"
+    with open(p, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["Date", "ISOWeek", "DOI", "Version", "Category", "Title", "Authors"])
+        w.writerow(["2024-01-15", 3, "10.1101/a", "1", "neuroscience", "T", "X"])
+    before = p.read_bytes()
+    assert prune_existing_csvs(str(tmp_path), set()) == 0
+    assert prune_existing_csvs(str(tmp_path), None) == 0
+    assert p.read_bytes() == before
 
 
 def test_pagination_detection():

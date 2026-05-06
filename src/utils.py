@@ -118,6 +118,38 @@ def load_all_existing_ids(data_dir):
     return existing
 
 
+def prune_existing_csvs(data_dir: str, categories: set | None) -> int:
+    """Rewrite each CSV in data_dir/YYYY/ keeping only rows whose Category is
+    in the set (case-insensitive). Returns total rows removed. No-op when
+    categories is empty/None.
+    """
+    if not categories or not exists(data_dir):
+        return 0
+    cat_filter = {c.strip().lower() for c in categories}
+    removed = 0
+    for entry in os.listdir(data_dir):
+        subdir = os.path.join(data_dir, entry)
+        if not os.path.isdir(subdir) or not entry.isdigit():
+            continue
+        for fname in os.listdir(subdir):
+            if not fname.endswith(".csv"):
+                continue
+            path = os.path.join(subdir, fname)
+            with open(path, newline="", encoding="UTF8") as f:
+                rows = list(csv.reader(f))
+            if not rows:
+                continue
+            header, *body = rows
+            kept = [r for r in body if len(r) >= 5 and r[4].strip().lower() in cat_filter]
+            if len(kept) != len(body):
+                removed += len(body) - len(kept)
+                with open(path, "w", newline="", encoding="UTF8") as f:
+                    w = csv.writer(f)
+                    w.writerow(header)
+                    w.writerows(kept)
+    return removed
+
+
 def filter_new_rows(rows, existing_ids):
     """Filter out rows whose (doi, version) is already known."""
     return [row for row in rows if (row[2], str(row[3])) not in existing_ids]

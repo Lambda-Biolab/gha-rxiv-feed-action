@@ -10,6 +10,7 @@ from utils import (
     load_all_existing_ids,
     needs_pagination,
     parse_biorxiv_json,
+    prune_existing_csvs,
     write_file,
 )
 
@@ -23,6 +24,10 @@ SERVER = getenv("SERVER", "biorxiv")  # biorxiv or medrxiv
 HEADER = ["Date", "ISOWeek", "DOI", "Version", "Category", "Title", "Authors"]
 PAGE_SIZE = 100
 BASE_URL = f"https://api.biorxiv.org/details/{SERVER}"
+
+pruned = prune_existing_csvs(OUT_DIR, CATEGORIES)
+if pruned:
+    print(f"Pruned {pruned} rows outside CATEGORIES from {OUT_DIR}")
 
 existing_ids = load_all_existing_ids(OUT_DIR)
 print(f"Loaded {len(existing_ids)} existing paper IDs from {OUT_DIR}")
