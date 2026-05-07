@@ -16,9 +16,7 @@ from utils import (
 
 OUT_DIR = getenv("OUT_DIR", "./data")
 DAYS = int(getenv("DAYS", "1"))
-CATEGORIES = {
-    c.strip() for c in getenv("CATEGORIES", "").split(",") if c.strip()
-}
+CATEGORIES = {c.strip() for c in getenv("CATEGORIES", "").split(",") if c.strip()}
 SERVER = getenv("SERVER", "biorxiv")  # biorxiv or medrxiv
 
 HEADER = ["Date", "ISOWeek", "DOI", "Version", "Category", "Title", "Authors"]
