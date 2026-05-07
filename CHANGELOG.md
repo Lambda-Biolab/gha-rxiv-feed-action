@@ -20,8 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `prune_existing_csvs()` rewrites historical CSVs on each run so rows
   outside the current category set are dropped retroactively (#1)
 - `docs/categories.md` documenting per-server taxonomies (bioRxiv 25
-  canonical, medRxiv 29 sampled, psyArXiv 6 top-level + 234 OSF nodes,
-  chemRxiv pending) (#1)
+  canonical, medRxiv 29 sampled) (#1)
 - Matrix workflow `write-rxiv-stats.yml` (renamed from
   `write-biorxiv-stats.yml`) running biorxiv + medrxiv legs serially
   (`max-parallel: 1`) under one cron (#4)

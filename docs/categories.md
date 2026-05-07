@@ -7,7 +7,6 @@ Status legend:
 
 - **canonical** — full list, verified
 - **sampled** — partial; needs full pagination from a longer-lived runner
-- **unreachable** — blocked from CI sandbox; re-run elsewhere
 
 ## bioRxiv (canonical, 25)
 
@@ -88,37 +87,3 @@ sports medicine
 surgery
 ```
 
-## psyArXiv (canonical, 6 top-level; 234 total OSF taxonomy nodes)
-
-Source: `https://api.osf.io/v2/preprint_providers/psyarxiv/taxonomies/`
-
-Top-level (recommended for `CATEGORIES` filter — the full 234-node taxonomy
-is too granular for a coarse filter):
-
-```text
-Engineering Psychology
-Life Sciences
-Meta-science
-Neuroscience
-Psychiatry
-Social and Behavioral Sciences
-```
-
-The 228 depth-1 children include `Cognitive Neuroscience`, `Clinical
-Psychology`, `Behavioral Economics`, `Computational Modeling`, and similar.
-Fetch the full list via the source URL above when implementing.
-
-## chemRxiv (unreachable, pending)
-
-Source: `https://chemrxiv.org/engage/chemrxiv/public-api/v1/items` (categories
-embedded in item records)
-
-The chemRxiv public API is fronted by Cloudflare and returns a challenge page
-to non-browser clients from the enumeration sandbox. Approaches that work:
-
-- run the fetch from a real browser DevTools session (paste cookies into a
-  `curl` invocation)
-- run from a CI runner where Cloudflare flags a verified UA
-- use the official client library if/when one ships
-
-Tracked in [issue #69](https://github.com/qte77/gha-biorxiv-stats-action/issues/69).
