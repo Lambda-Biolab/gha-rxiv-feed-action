@@ -94,8 +94,7 @@ Data sourced from:
 - medRxiv: `https://api.biorxiv.org/details/medrxiv/{date1}/{date2}/{cursor}/json`
 
 Both share the same CSHL endpoint, distinguished by the `{server}` path
-segment. chemRxiv and psyArXiv use different APIs and are not yet
-supported.
+segment.
 
 ## License
 
