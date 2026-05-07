@@ -1,7 +1,5 @@
 # gha-biorxiv-stats-action
 
-![social preview](https://opengraph.githubassets.com/1/Lambda-Biolab/gha-biorxiv-stats-action)
-
 Weekly stats of papers submitted to [bioRxiv](https://www.biorxiv.org/) and
 [medRxiv](https://www.medrxiv.org/), filtered to a configurable category set
 and written as deduplicated weekly CSV files.
@@ -75,13 +73,6 @@ Data sourced from
 chemRxiv and psyArXiv use different APIs and are tracked separately
 ([upstream issue #69](https://github.com/qte77/gha-biorxiv-stats-action/issues/69),
 [upstream issue #70](https://github.com/qte77/gha-biorxiv-stats-action/issues/70)).
-
-## Consuming the data
-
-See [issue #7](https://github.com/Lambda-Biolab/gha-biorxiv-stats-action/issues/7)
-for ingestion recipes (cross-repo `gh api` fetch, submodule, Release artifact)
-and an LLM-augmented pipeline using `gh models` for relevance filtering and
-abstract extraction.
 
 ## License
 
