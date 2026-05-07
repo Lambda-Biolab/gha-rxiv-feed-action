@@ -41,8 +41,25 @@ output directory under `data/<server>/`.
     TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-For multi-server matrix usage, see
-[`.github/workflows/write-rxiv-stats.yml`](.github/workflows/write-rxiv-stats.yml).
+Multi-server matrix:
+
+```yaml
+strategy:
+  max-parallel: 1   # serialize to avoid concurrent auto-PR merges
+  matrix:
+    include:
+      - server: biorxiv
+        categories: "bioinformatics,microbiology"
+      - server: medrxiv
+        categories: "infectious diseases,genetic and genomic medicine"
+steps:
+  - uses: Lambda-Biolab/gha-biorxiv-stats-action@v0
+    with:
+      OUT_DIR: "./data/${{ matrix.server }}"
+      SERVER: ${{ matrix.server }}
+      CATEGORIES: ${{ matrix.categories }}
+      TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
 
 ## Inputs
 
