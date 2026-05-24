@@ -4,7 +4,7 @@ Logs a weekly CSV feed of papers submitted to [arXiv](https://arxiv.org/),
 [bioRxiv](https://www.biorxiv.org/), and [medRxiv](https://www.medrxiv.org/)
 for selected categories. Cron cadence is set by the calling workflow.
 
-![Version](https://img.shields.io/badge/version-0.2.0-8A2BE2)
+![Version](https://img.shields.io/badge/version-0.2.1-8A2BE2)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 [![Update rxiv feed](https://github.com/qte77/gha-rxiv-feed-action/actions/workflows/update-rxiv-feed.yaml/badge.svg)](https://github.com/qte77/gha-rxiv-feed-action/actions/workflows/update-rxiv-feed.yaml)
 [![CodeFactor](https://www.codefactor.io/repository/github/qte77/gha-rxiv-feed-action/badge)](https://www.codefactor.io/repository/github/qte77/gha-rxiv-feed-action)
@@ -26,7 +26,7 @@ for selected categories. Cron cadence is set by the calling workflow.
 Default: fetch the last week of arXiv submissions in CS/AI categories.
 
 ```yaml
-- uses: qte77/gha-rxiv-feed-action@v0
+- uses: qte77/gha-rxiv-feed-action@v0.2.1
   with:
     TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -34,7 +34,7 @@ Default: fetch the last week of arXiv submissions in CS/AI categories.
 ### arXiv with custom topics + citation enrichment
 
 ```yaml
-- uses: qte77/gha-rxiv-feed-action@v0
+- uses: qte77/gha-rxiv-feed-action@v0.2.1
   with:
     TOPICS: "cat:cs.CV+OR+cat:cs.LG"
     INCLUDE_CITATIONS: "true"
@@ -45,7 +45,7 @@ Default: fetch the last week of arXiv submissions in CS/AI categories.
 ### bioRxiv / medRxiv
 
 ```yaml
-- uses: qte77/gha-rxiv-feed-action@v0
+- uses: qte77/gha-rxiv-feed-action@v0.2.1
   with:
     SERVER: "biorxiv"
     OUT_DIR: "./data/biorxiv"
@@ -67,7 +67,7 @@ strategy:
       - server: medrxiv
         categories: "infectious diseases,genetic and genomic medicine"
 steps:
-  - uses: qte77/gha-rxiv-feed-action@v0
+  - uses: qte77/gha-rxiv-feed-action@v0.2.1
     with:
       OUT_DIR: "./data/${{ matrix.server }}"
       SERVER: ${{ matrix.server }}
