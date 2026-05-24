@@ -3736,3 +3736,7 @@ Published,ISOWeek,Updated,ID,Version,Title,Categories
 2026-05-14T21:05:03Z,20,2026-05-19T21:00:08Z,2605.15419,2,'Lagrangian Flow Matching: A Least-Action Framework for Principled Path Design',cs.LG
 2026-05-14T18:18:12Z,20,2026-05-20T14:25:31Z,2605.15305,4,'WorldParticle: Unified World Simulation of Lagrangian Particle Dynamics via Transformer',cs.GR;cs.LG
 2026-05-14T18:07:42Z,20,2026-05-20T04:45:28Z,2605.16428,2,'The Impact of AI Search on the Online Content Ecosystem: Evidence from Google and Reddit',cs.IR;cs.AI
+2026-05-17T16:03:13Z,20,2026-05-17T16:03:13Z,2605.17518,1,'Integrating Bayesian Spectral Deconvolution and Expert Scientific Reasoning for Robust Peak Estimation',physics.data-an;stat.AP;stat.ML
+2026-05-16T22:46:15Z,20,2026-05-16T22:46:15Z,2605.17186,1,'Solving linear-rate ODE hierarchies (like master equations) using closures and operator splitting',math.NA;math.DS;math.PR;q-bio.QM;stat.CO
+2026-05-16T20:59:06Z,20,2026-05-16T20:59:06Z,2605.17154,1,'Learning Gaussian Graphical Models under Total Positivity via Spectral Graph Sparsification',stat.ME;stat.ML
+2026-05-16T19:26:31Z,20,2026-05-16T19:26:31Z,2605.17129,1,'Within-host immunology to age-of-infection epidemiology via a virtual cohort',q-bio.PE;q-bio.QM

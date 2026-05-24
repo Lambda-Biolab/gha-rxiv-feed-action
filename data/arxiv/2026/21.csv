@@ -2168,3 +2168,31 @@ Published,ISOWeek,Updated,ID,Version,Title,Categories
 2026-05-18T02:50:37Z,21,2026-05-18T02:50:37Z,2605.20242,1,'LEAP: A closed-loop framework for perovskite precursor additive discovery',cs.LG;cond-mat.mtrl-sci;cs.AI;physics.chem-ph
 2026-05-18T02:49:58Z,21,2026-05-20T07:06:32Z,2605.17776,2,'CosFly-Track: A Large-Scale Multi-Modal Dataset for UAV Visual Tracking via Multi-Constraint Trajectory Optimization',cs.RO
 2026-05-18T00:12:24Z,21,2026-05-18T00:12:24Z,2605.20241,1,'Geometry-Lite: Interpretable Safety Probing via Layer-Wise Margin Geometry',cs.LG;cs.AI;cs.CL
+2026-05-21T17:22:38Z,21,2026-05-21T17:22:38Z,2605.22755,1,'Assessing global drivers of forest transpiration using clustered machine learning models',q-bio.QM
+2026-05-21T05:12:07Z,21,2026-05-21T05:12:07Z,2605.22009,1,'SDFStent: Real-time interactive virtual stenting via SDF deformation fields',cs.CE;physics.med-ph;q-bio.QM
+2026-05-21T03:25:18Z,21,2026-05-21T03:25:18Z,2605.21945,1,'A Characterization of Level-k Realizability for Clustering Systems',q-bio.MN
+2026-05-21T01:13:52Z,21,2026-05-21T01:13:52Z,2605.21860,1,'Robust Statistical Estimators with Bounded Empirical Sensitivity',math.ST;cs.DS;cs.IT;stat.ML
+2026-05-20T22:38:26Z,21,2026-05-20T22:38:26Z,2605.21793,1,'Targeted maximum likelihood estimation of vaccine effectiveness and immune correlates in test-negative design studies with missing data',stat.ME;stat.AP;stat.ML
+2026-05-20T18:40:04Z,21,2026-05-20T18:40:04Z,2605.21627,1,'Distribution-free root cause analysis',stat.ME;stat.ML
+2026-05-20T16:29:01Z,21,2026-05-20T16:29:01Z,2605.21365,1,'$L^2$ over Wasserstein: Statistical Analysis for Optimal Transport',math.ST;stat.ML
+2026-05-20T04:39:53Z,21,2026-05-20T04:39:53Z,2605.20692,1,'Inferring infectiousness: a joint model of the within-host viral kinetics of SARS-CoV-2',stat.ME;q-bio.PE;q-bio.QM;stat.AP
+2026-05-19T20:06:54Z,21,2026-05-19T20:06:54Z,2605.20454,1,'Sparse Contextual Coupling Reshapes Diffusion Geometry in Multilayer Hypergraphs',physics.soc-ph;cs.SI;q-bio.QM
+2026-05-19T17:31:20Z,21,2026-05-19T17:31:20Z,2605.20143,1,'Semi-Parametric Bayesian Additive Regression Trees for Risk Prediction with High-Dimensional Epigenetic Signatures and Low-Dimensional Covariates',stat.AP;stat.CO;stat.ML
+2026-05-19T12:50:39Z,21,2026-05-19T12:50:39Z,2605.19784,1,'Fast Spawn\&Prune (FS\&P): Global convergence of stochastic conic particle gradient descent via birth/death process',math.OC;math.PR;math.ST;stat.ML
+2026-05-19T09:22:30Z,21,2026-05-19T09:22:30Z,2605.19579,1,'TACK: A statistical evaluation of degradation activity on a novel TArgeting Chimeras Knowledge dataset',q-bio.QM
+2026-05-19T04:14:11Z,21,2026-05-19T04:14:11Z,2605.19333,1,'Deep-time consistency in proteome elemental composition across cellular and viral life',q-bio.BM;q-bio.PE
+2026-05-19T01:49:35Z,21,2026-05-19T01:49:35Z,2605.19252,1,'Elemental Stoichiometry as an Ecological Biosignature with Applications to Life Detection',q-bio.BM;astro-ph.EP;q-bio.MN
+2026-05-18T23:51:02Z,21,2026-05-18T23:51:02Z,2605.19195,1,'The Thermodynamic Costs of Simple Linear Regression',cond-mat.stat-mech;cs.IT;stat.ML
+2026-05-18T19:53:33Z,21,2026-05-18T19:53:33Z,2605.19071,1,'Informational blueprints reveal condition-dependent gene regulatory architectures',q-bio.GN;cond-mat.stat-mech;q-bio.MN;q-bio.QM
+2026-05-18T18:28:16Z,21,2026-05-18T18:28:16Z,2605.19006,1,'Causal Inference with Categorical Unobserved Confounder via Mixture Learning',stat.ME;stat.ML
+2026-05-18T17:23:13Z,21,2026-05-18T17:23:13Z,2605.18685,1,'Multi-objective Bayesian inference in an agent-based model of zebrafish patterns via topological data analysis',q-bio.QM
+2026-05-18T16:41:31Z,21,2026-05-18T16:41:31Z,2605.18633,1,'Stable Causal Discovery via Directed Acyclic Graph Aggregation',stat.ME;stat.ML
+2026-05-18T16:04:23Z,21,2026-05-18T16:04:23Z,2605.18588,1,'OSSMM: An Open-Source Sleep Monitor and Modulator',stat.ME;q-bio.QM
+2026-05-18T15:50:40Z,21,2026-05-18T15:50:40Z,2605.18571,1,'Incorporating vaccine effects into epidemiological models: common pitfalls and solutions',q-bio.PE;q-bio.QM
+2026-05-18T13:46:47Z,21,2026-05-18T13:46:47Z,2605.18406,1,'Computational aspects of the Volterra Signature',math.NA;stat.ML
+2026-05-18T12:34:00Z,21,2026-05-18T12:34:00Z,2605.18315,1,'Attention-based PCA',math.OC;stat.ML
+2026-05-18T08:34:07Z,21,2026-05-18T08:34:07Z,2605.18042,1,'On efficient robust regression with subquadratic samples',cs.DS;stat.ML
+2026-05-18T08:11:24Z,21,2026-05-18T08:11:24Z,2605.18019,1,'A data-driven Fourier-mixture neural-network method for density estimation',stat.ML;q-fin.CP
+2026-05-18T07:18:22Z,21,2026-05-18T07:18:22Z,2605.17963,1,'From Saddle Points Toward Global Minima: A Newton-Type Method on Wasserstein Space',math.OC;stat.ML
+2026-05-18T06:41:20Z,21,2026-05-18T06:41:20Z,2605.17934,1,'Conditional Predictive Inference for General Structured Data with Group Symmetries',stat.ME;math.ST;stat.ML
+2026-05-18T02:29:57Z,21,2026-05-18T02:29:57Z,2605.17763,1,'Comparing Two Categorical Gini Correlations with Applications to Classification Problems',stat.ME;stat.ML
