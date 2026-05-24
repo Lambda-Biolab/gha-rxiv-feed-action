@@ -17,12 +17,12 @@ jobs:
         include:
           - server: arxiv
             categories: ""
-            topics: "cat:cs.CV+OR+cat:cs.LG+OR+cat:cs.CL+OR+cat:cs.AI+OR+cat:cs.NE+OR+cat:cs.RO"
+            topics: "cat:cs.CV+OR+cat:cs.LG+OR+cat:cs.CL+OR+cat:cs.AI+OR+cat:cs.NE+OR+cat:cs.RO+OR+cat:q-bio.BM+OR+cat:q-bio.QM+OR+cat:q-bio.MN+OR+cat:q-bio.SC+OR+cat:stat.ML"
           - server: biorxiv
-            categories: "scientific communication and education"
+            categories: "biochemistry,biophysics,molecular biology,microbiology,bioinformatics,pharmacology and toxicology,synthetic biology,immunology,bioengineering,systems biology,genetics,cell biology,genomics"
             topics: ""
           - server: medrxiv
-            categories: "medical education"
+            categories: "infectious diseases,urology,dentistry and oral medicine,pharmacology and therapeutics,allergy and immunology,public and global health,toxicology,nephrology,epidemiology"
             topics: ""
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
