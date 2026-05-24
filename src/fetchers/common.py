@@ -103,6 +103,63 @@ def filter_new_rows(rows, existing_ids, dedup_cols: tuple[int, int] = (2, 3)):
     return [row for row in rows if (row[id_col], str(row[ver_col])) not in existing_ids]
 
 
+def _csv_quote(value: object) -> str:
+    """RFC-4180 quote a CSV cell, also quoting on any whitespace.
+
+    Standard ``csv.writer(QUOTE_MINIMAL)`` only quotes when a cell holds
+    the delimiter, the quotechar, or a newline. Cells containing internal
+    whitespace (``"scientific communication and education"``,
+    ``"He smiled and left"``) round-trip fine but read ambiguously to
+    humans scanning the raw file. This helper additionally quotes any
+    cell whose ``str()`` contains a whitespace character, doubling
+    internal ``"`` per the spec.
+    """
+    s = str(value)
+    needs_quote = '"' in s or "," in s or "\n" in s or "\r" in s or any(c.isspace() for c in s)
+    if needs_quote:
+        return '"' + s.replace('"', '""') + '"'
+    return s
+
+
+def _write_csv_row(f, row) -> None:
+    """Write one row using :func:`_csv_quote` per cell, ``\\n`` terminator."""
+    f.write(",".join(_csv_quote(c) for c in row))
+    f.write("\n")
+
+
+def upgrade_csv_header(out_file: str, new_header: list) -> bool:
+    """Rewrite ``out_file`` so its header matches ``new_header`` when the
+    existing header is a strict prefix of ``new_header``. Pads each data
+    row with empty cells for the added trailing columns.
+
+    Safety rule: the existing header must equal ``new_header[:N]`` where
+    N is the existing column count. This means upgrade is only allowed
+    when columns are *appended* — never when an existing column would be
+    semantically renamed (e.g. legacy arXiv ``Weekday`` at col 1 vs
+    current ``ISOWeek``). No-op (returns ``False``) on any mismatch,
+    when the file is missing, or when ``new_header`` is not strictly
+    wider.
+    """
+    if not exists(out_file):
+        return False
+    with open(out_file, newline="", encoding="UTF8") as f:
+        rows = list(csv.reader(f))
+    if not rows:
+        return False
+    old_header = rows[0]
+    new_header_list = list(new_header)
+    if len(new_header_list) <= len(old_header):
+        return False
+    if old_header != new_header_list[: len(old_header)]:
+        return False
+    pad = [""] * (len(new_header_list) - len(old_header))
+    with open(out_file, "w", newline="", encoding="UTF8") as f:
+        _write_csv_row(f, new_header_list)
+        for row in rows[1:]:
+            _write_csv_row(f, row + pad)
+    return True
+
+
 def write_file(
     content,
     file_name,
@@ -111,21 +168,25 @@ def write_file(
     dedup_cols: tuple[int, int] = (2, 3),
 ):
     """Write rows to a CSV file, creating header on first write. Dedupes
-    against existing rows on the ``dedup_cols`` key pair.
+    against existing rows on the ``dedup_cols`` key pair. When a wider
+    ``header`` is passed and the file already has a narrower one, the
+    file is rewritten with the wider header and old rows padded — so a
+    schema growth (#116: Abstract/Authors) takes effect on appended-to
+    CSVs, not just newly created ones.
     """
     out_file = f"{out_dir}/{file_name}.csv"
     fopen_kw = {"file": out_file, "newline": "", "encoding": "UTF8"}
     if not exists(out_file):
         makedirs(dirname(out_file) if dirname(out_file) else out_dir, exist_ok=True)
         with open(mode="w+", **fopen_kw) as f:
-            writer = csv.writer(f)
             if header:
-                writer.writerow(header)
+                _write_csv_row(f, header)
+    elif header:
+        upgrade_csv_header(out_file, header)
     existing = _load_existing_ids(out_file, dedup_cols)
     id_col, ver_col = dedup_cols
     new_rows = [row for row in content if (row[id_col], str(row[ver_col])) not in existing]
     if new_rows:
         with open(mode="a+", **fopen_kw) as f:
-            writer = csv.writer(f)
             for row in new_rows:
-                writer.writerow(row)
+                _write_csv_row(f, row)
