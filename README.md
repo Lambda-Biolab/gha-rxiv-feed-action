@@ -7,7 +7,6 @@ for selected categories. Cron cadence is set by the calling workflow.
 ![Version](https://img.shields.io/badge/version-0.2.1-8A2BE2)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 [![Update rxiv feed](https://github.com/qte77/gha-rxiv-feed-action/actions/workflows/update-rxiv-feed.yaml/badge.svg)](https://github.com/qte77/gha-rxiv-feed-action/actions/workflows/update-rxiv-feed.yaml)
-[![CodeFactor](https://www.codefactor.io/repository/github/qte77/gha-rxiv-feed-action/badge)](https://www.codefactor.io/repository/github/qte77/gha-rxiv-feed-action)
 [![CodeQL](https://github.com/qte77/gha-rxiv-feed-action/actions/workflows/codeql.yml/badge.svg)](https://github.com/qte77/gha-rxiv-feed-action/actions/workflows/codeql.yml)
 [![Dependabot](https://github.com/qte77/gha-rxiv-feed-action/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/qte77/gha-rxiv-feed-action/actions/workflows/dependabot/dependabot-updates)
 [![Ruff](https://github.com/qte77/gha-rxiv-feed-action/actions/workflows/ruff.yml/badge.svg)](https://github.com/qte77/gha-rxiv-feed-action/actions/workflows/ruff.yml)
